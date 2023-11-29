@@ -2,7 +2,6 @@ package fiap.testesnobackend.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import fiap.testesnobackend.exception.MensagemNotFoundException;
 import fiap.testesnobackend.model.Mensagem;
 import fiap.testesnobackend.service.MensagemService;
@@ -265,7 +264,6 @@ public class MensagemControllerTest {
 
     public static String asJsonString(final Object object) throws JsonProcessingException {
         return new ObjectMapper()
-                .registerModule(new JavaTimeModule())
                 .writeValueAsString(object);
     }
 }
