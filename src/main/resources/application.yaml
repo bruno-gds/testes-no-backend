@@ -1,16 +1,11 @@
+server:
+  port: 8080
 spring:
   datasource:
-    url: jdbc:h2:mem:test
+    driver-class-name: org.postgresql.Driver
     username: root
     password: toor
-    driver-class-name: org.h2.Driver
-  jpa:
-    database: h2
-    database-platform: org.hibernate.dialect.H2Dialect
-    # Utilizar apenas para desenvolvimento
-    defer-datasource-initialization: true
-    hibernate:
-      ddl-auto: create-drop
-  h2:
-    console:
-      enabled: true
+    url: jdbc:postgresql://localhost:5432/backend
+    jpa:
+      hibernate:
+        ddl-auto: true
