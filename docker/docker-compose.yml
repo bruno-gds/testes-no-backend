@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  testes-no-backend:
+    container_name: postgres-tb
+    image: postgres
+    environment:
+      POSTGRES_USER: bruno
+      POSTGRES_PASSWORD: bruno
+#      POSTGRES_DB: backend
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db-data:/var/lib/postgresql
