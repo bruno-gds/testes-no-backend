@@ -152,7 +152,7 @@ public class MensagemControllerTest {
             mockMvc.perform(put("/mensagens/{id}", id)
                             .contentType(MediaType.APPLICATION_JSON)
                             .content(asJsonString(mensagem)))
-                    .andDo(print()) // Muito bom para realizar Debug
+//                    .andDo(print()) // Muito bom para realizar Debug
                     .andExpect(status().isBadRequest())
                     .andExpect(content().string(conteudoDaExcecao));
             verify(mensagemService, times(1))
@@ -172,7 +172,7 @@ public class MensagemControllerTest {
             mockMvc.perform(put("/mensagens/{id}", id)
                             .contentType(MediaType.APPLICATION_JSON)
                             .content(asJsonString(mensagem)))
-                    .andDo(print()) // Muito bom para realizar Debug
+//                    .andDo(print()) // Muito bom para realizar Debug
                     .andExpect(status().isBadRequest())
                     .andExpect(content().string(conteudoDaExcecao));
             verify(mensagemService, times(1))
@@ -239,7 +239,7 @@ public class MensagemControllerTest {
             mockMvc.perform(get("/mensagens")
                             .param("page", "0")
                             .param("size", "10"))
-                    .andDo(print())
+//                    .andDo(print())
                     .andExpect(status().isOk())
                     .andExpect(jsonPath("$.content", not(empty())))
                     .andExpect(jsonPath("$.totalPages").value(1))
@@ -254,7 +254,7 @@ public class MensagemControllerTest {
             when(mensagemService.listarMensagens(any(Pageable.class))).thenReturn(page);
 
             mockMvc.perform(get("/mensagens"))
-                    .andDo(print())
+//                    .andDo(print())
                     .andExpect(status().isOk())
                     .andExpect(jsonPath("$.content", not(empty())))
                     .andExpect(jsonPath("$.totalPages").value(1))
