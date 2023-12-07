@@ -18,4 +18,5 @@ mvn test -P integration-test
 
 ```sh
 mvn test -P system-test
+mvn test -P system-test -Dcucumber.filter.tags=@smoke
 ```
