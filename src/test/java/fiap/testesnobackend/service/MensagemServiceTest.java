@@ -4,6 +4,8 @@ import fiap.testesnobackend.exception.MensagemNotFoundException;
 import fiap.testesnobackend.model.Mensagem;
 import fiap.testesnobackend.repository.MensagemRepository;
 import fiap.testesnobackend.utils.MensagemHelper;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -50,6 +52,7 @@ class MensagemServiceTest {
 
 
     @Test
+    @Severity(SeverityLevel.BLOCKER)
     void devePermitirRegistrarMensagem() {
         // ARRANGE
         var mensagem = MensagemHelper.gerarMensagem();
@@ -70,6 +73,7 @@ class MensagemServiceTest {
     }
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
     void devePermitirBuscarMensagens() {
         // ARRANGE
         var id = UUID.fromString("a8bfcb1e-2339-421b-8c15-af7aa09ef672");
@@ -87,6 +91,7 @@ class MensagemServiceTest {
     }
 
     @Test
+    @Severity(SeverityLevel.MINOR)
     void deveGerarExcecao_QuandoBuscarMensagem_IdNaoExiste() {
         var id = UUID.fromString("b55fda17-8192-4d05-be22-8f66ecb1af54");
 

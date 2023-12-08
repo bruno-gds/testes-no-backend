@@ -6,6 +6,7 @@ import fiap.testesnobackend.exception.MensagemNotFoundException;
 import fiap.testesnobackend.model.Mensagem;
 import fiap.testesnobackend.service.MensagemService;
 import fiap.testesnobackend.utils.MensagemHelper;
+import io.qameta.allure.Description;
 import org.junit.jupiter.api.*;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -22,7 +23,6 @@ import static org.hamcrest.Matchers.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
@@ -109,6 +109,7 @@ public class MensagemControllerTest {
         }
 
         @Test
+        @Description("Valida o cenário de exceção ao efetuar uma busca de mensagem quando o id não existir")
         void deveGerarExcecao_QuandoBuscarMensagem_IdNaoExiste() throws Exception {
             var id = UUID.fromString("16d50898-4321-4eb2-ade3-2bccb6718911");
 
