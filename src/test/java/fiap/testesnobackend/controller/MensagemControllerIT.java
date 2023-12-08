@@ -2,6 +2,7 @@ package fiap.testesnobackend.controller;
 
 import fiap.testesnobackend.model.Mensagem;
 import fiap.testesnobackend.utils.MensagemHelper;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -50,6 +51,7 @@ public class MensagemControllerIT {
             var mensagem = MensagemHelper.gerarMensagem();
 
             given()
+                        .filter(new AllureRestAssured())
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .body(mensagem)
 //                        .log().all()
@@ -69,6 +71,7 @@ public class MensagemControllerIT {
                     "</mensagem>";
 
             given()
+                        .filter(new AllureRestAssured())
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .body(xmlPayload)
 //                        .log().all()
@@ -94,7 +97,9 @@ public class MensagemControllerIT {
         void devePermitirBuscarMensagens() {
             var id = "22940b60-002f-466c-871b-6b134d0e288c";
 
-            when()
+            given()
+                    .filter(new AllureRestAssured())
+            .when()
                     .get("/mensagens/{id}", id)
             .then()
                     .statusCode(HttpStatus.OK.value());
