@@ -1,0 +1,29 @@
+version: '3.7'
+
+services:
+  app:
+    image: testes-no-backend:dev
+    build:
+      context: ../.
+    container_name: backend
+    depends_on:
+      - testes-no-backend
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/backend
+      SPRING_DATASOURCE_USERNAME: bruno
+      SPRING_DATASOURCE_PASSWORD: bruno
+      SPRING_JPA_HIBERNATE_DDL_AUTO: create-drop
+
+  db:
+    image: postgres
+    container_name: postgres-tb
+    environment:
+      POSTGRES_USER: bruno
+      POSTGRES_PASSWORD: bruno
+      POSTGRES_DB: backend
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db-data:/var/lib/postgresql
