@@ -139,6 +139,17 @@
 			<version>2.23.0</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- teste de performance -->
+		<dependency>
+			<groupId>io.gatling</groupId>
+			<artifactId>gatling-app</artifactId>
+			<version>3.9.5</version>
+		</dependency>
+		<dependency>
+			<groupId>io.gatling.highcharts</groupId>
+			<artifactId>gatling-charts-highcharts</artifactId>
+			<version>3.9.5</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -219,6 +230,23 @@
 							</includes>
 							<excludes combine.self="override">
 							</excludes>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<!-- Configuração para executar os testes de performance -->
+		<profile>
+			<id>performance-test</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>io.gatling</groupId>
+						<artifactId>gatling-maven-plugin</artifactId>
+						<version>4.3.7</version>
+						<configuration>
+							<simulationClass>fiap.testesnobackend.performance.PerformanceSimulation</simulationClass>
 						</configuration>
 					</plugin>
 				</plugins>
